@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body, #root { height: 100%; }
+body { @apply bg-canvas font-sans text-ink antialiased; }
+.num { @apply font-display font-light tracking-tight; font-variant-numeric: tabular-nums; }
+.eyebrow { @apply text-[10px] font-medium uppercase tracking-[0.08em] text-ink-muted; }
+.card { @apply min-w-0 rounded-card border border-hairline bg-surface p-5 shadow-card; }
+:focus-visible { outline: 2px solid #126463; outline-offset: 2px; }
+@keyframes pulse-skel { 0%, 100% { opacity: 1 } 50% { opacity: .45 } }
+.skel { @apply rounded-xl bg-muted; animation: pulse-skel 1.4s ease-in-out infinite; }
+@keyframes fade-up { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+.enter { animation: fade-up 300ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes drawer-in { from { opacity: 0; transform: translateX(24px) } to { opacity: 1; transform: none } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 150ms !important; transition-duration: 150ms !important; }
+  .enter { animation-name: fade-only; }
+}
+@keyframes fade-only { from { opacity: 0 } to { opacity: 1 } }
